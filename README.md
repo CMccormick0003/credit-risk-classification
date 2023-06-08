@@ -24,25 +24,25 @@ Definitions of healthy and high-risk loans:
 - High-risk: A value of 1 in the "loan_status" column in the csv means the loan has a "high risk" of defaulting.
 
 ## Steps
-### Split the Data into Training and Testing Sets
+### 1. Split the Data into Training and Testing Sets
 - Read the lending_data.csv data from the Resources folder into a Pandas DataFrame.
 - Create the labels set (y) from the “loan_status” column, and then create the features (X) DataFrame from the remaining columns.
 - Split the data into training and testing datasets by using train_test_split.
 
-### Create a Logistic Regression Model with the Original Data
+### 2. Create a Logistic Regression Model with the Original Data
 - Fit a logistic regression model by using the training data (X_train and y_train).
 - Save the predictions for the testing data labels by using the testing feature data (X_test) and the fitted model.
-- Evaluate the model’s performance by a) calculating the accuracy score of the model, b) generating a confusion matrix, and printing the classification report.
-### How well does the logistic regression model predict both the 0 (healthy loan) and 1 (high-risk loan) labels?
-Precision for healthy loans and high-risk was 1.0 and 0.85, respectively.   The model predicted healthy loans with much more accuracy than high-risk loans.  The overall weighted accuracy was 0.99.  I woudl have confidence using this model to predict both types of loans.
+- Calculate the accuracy score of the model.
+* Generate a confusion matrix.
+* Print the classification report.
 
-
-### Create a Logistic Regression Model with the Original Data
-- Fit a logistic regression model by using the training data (X_train and y_train).
+### Create a Logistic Regression Model with Resampled Training Data
+- Use the `RandomOverSampler` module from the imbalanced-learn library to resample the data. 
+- Count the distinct values of the resampled labels data to be sure to confirm that the labels have an equal number of data points. 
 - Save the predictions for the testing data labels by using the testing feature data (X_test) and the fitted model.
 - Evaluate the model’s performance by a) calculating the accuracy score of the model, b) generating a confusion matrix, and printing the classification report.
 
-### Results
+## Results
 ### Machine Learning Model 1: Logistic Regression based on Original Data
   - accuracy score: 99%
   - precision score: Healthy loan - 100%, High-risk loan - 85%
@@ -56,7 +56,7 @@ This model used oversampled data.
   - recall score of the machine learning model:Healthy loan - 99%, 
   - High-risk loan - 91%, Average for the model - 99%
 
-### Summary
+## Summary
 Model 2 with oversampled data has the same precision to predict Healthy loans (100%) and slightly less precisions (84% compared to 85%) to predict High-risk loans compared to Model 1. Both models have high accuracy of 99%.  
 
 Although both models have the same accuracy and similar precision, Model 2 used the resampled training data has better recall.  Recall represents the proportion of true positive predictions (correctly predicted positive instances) out of all actual positive instances. Recall is True Positives / (True Positives + False Negatives).  Model 2 also had a higher F1 score for High-risk loans compared to Model 1 (91% compared to 88%).  F1 score is a performance metric that combines both precision and recall into a single value.
