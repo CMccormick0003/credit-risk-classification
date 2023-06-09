@@ -1,20 +1,19 @@
 # Credit Risk Analysis Report
 
 ### An overview of the analysis: 
-The purpose of this analysis is to rain and evaluate a model based on loan risk. 
+The purpose of this analysis is to train and evaluate a model based on loan risk. 
 This analysis uses a dataset of historical lending activity from a peer-to-peer lending services company to build a model that can identify the creditworthiness of borrowers as a Healthy loan or a High-risk loan.
 
-**** Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-
 The steps performed were:
-- Split the Data into Training and Testing Sets
-- Create a Logistic Regression Model with the Original Data
-- Predict a Logistic Regression Model with Resampled Training Data
-- 
-THe tools used were:
-- Pandas
-- Python (pathlib module, imblearn.over_sampline module), 
-- Scikit-learn (metrics module, model_selection module and linear_model)
+- Split the Data into Training and Testing Sets.  
+This included creating the labels set (y) from the “loan_status” column and the features (X) DataFrame from the remaining columns. Using the value_counts function, the balance of the labels variable (y) was checked and it was 77,535 rows.  train_test_split was used to split the data into training and testing datasets.
+- Create a Logistic Regression Model with the Original Data.  
+Training data were used to fit a logistic regression model.  Predictions on the testing data labels were done using the testing feature data (X_test) and the fitted model.  Predictions were saved.
+- Predict a Logistic Regression Model with Resampled Training Data.  
+The RandomOverSampler module from the imbalanced-learn library was used to resample the data.  The LogisticRegression classifier and the resampled data were used to fit the model and make predictions.
+
+The tools used were:
+Pandas, Python (pathlib module, imblearn.over_sampline module), and Scikit-learn (metrics module, model_selection module and linear_model)
 
 ## Background
 The source data for this exercise are from the csv file: lending_data.csv.
